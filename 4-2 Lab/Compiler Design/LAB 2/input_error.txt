@@ -1,0 +1,6 @@
+int a = 'abc';
+print(a);
+if (a @ b) {
+    a = a + 1;
+}
+string s = "hello

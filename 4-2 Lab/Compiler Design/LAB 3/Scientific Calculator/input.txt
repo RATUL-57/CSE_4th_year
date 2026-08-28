@@ -1,0 +1,15 @@
+2+3*4
+PI
+E
+-5+3
+sin(PI/2)
+sqrt(25
+sqrt(-9)
+log(10)
+log(0)
+x = 10
+y = x + 5
+y * 2
+rad(180)
+deg(3.14159265)
+tan(PI/2)

@@ -1,0 +1,228 @@
+**************
+***LEX FILE***
+**************
+
+%{
+#include "config.tab.h"
+#include <stdlib.h>
+#include <string.h>
+
+extern YYSTYPE yylval;
+%}
+
+%%
+
+[0-9]+\.[0-9]+ {
+    yylval.dval = atof(yytext);
+    return DOUBLE;
+}
+
+[0-9]+ {
+    yylval.ival = atoi(yytext);
+    return INTEGER;
+}
+
+[A-Za-z_][A-Za-z0-9_.]* {
+    strncpy(yylval.sval, yytext, sizeof(yylval.sval) - 1);
+    yylval.sval[sizeof(yylval.sval) - 1] = '\0';
+    return STRING;
+}
+
+
+true|false {
+    yylval.bval = *yytext;
+    return BOOL;
+}
+
+"["    { return '['; }
+"]"    { return ']'; }
+"="    { return '='; }
+
+
+[ \t\r]+  { /* ignore whitespace */ }
+\n        { return '\n'; }
+
+.         { return yytext[0]; }
+
+
+
+%%
+
+int yywrap(void) {
+    return 1;
+}
+
+
+
+
+
+
+
+
+*************************************
+*********** YACC FILE ***************
+*************************************
+
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#define MAX_VAR 1000
+
+void yyerror(char *s);
+int yylex();
+
+extern FILE *yyin;
+
+/* Output file for results */
+FILE *output = NULL;
+%}
+
+%union
+{
+    int ival;
+    double dval;
+    char sval[100];
+    bool bval;
+}
+
+%token <ival> INTEGER
+%token <dval> DOUBLE
+%token <sval> STRING
+%token <bval> BOOL
+
+%type <sval> statement expr key
+
+
+%%
+
+
+program:
+      lines
+;
+
+lines:
+      lines line
+    |
+;
+
+line:
+      statement '\n'
+    | '\n'
+;
+
+statement:
+      
+        key '=' expr
+      {
+          
+      }
+
+    | '[' expr ']'
+      {
+          
+      }
+;
+
+key:
+
+        STRING  { }
+
+expr:
+
+        INTEGER  { }
+    |   STRING  { }
+    |   DOUBLE  { }
+    |   BOOL  { }
+;
+
+
+%%
+
+
+
+int yyerror(char *s) {
+    fprintf(stderr, "%s\n", s);
+    return 0;
+}
+
+int main(void) {
+    
+    yyin = fopen("input.txt", "r");
+    if(!yyin)
+    {
+        fprintf(stderr, "Cannot open input.txt\n");
+        return 1;
+    }
+
+    output = fopen("output.txt", "w");
+    if(!output)
+    {
+        fprintf(stderr, "Cannot open output.txt\n");
+        fclose(yyin);
+        return 1;
+    }
+
+    yyparse();
+
+    fclose(yyin);
+    fclose(output);
+
+    return 0;
+}
+
+
+
+****************************************
+**********  INPUT FILE 1 ***************
+****************************************
+
+[Database]
+host=localhost
+port=3306
+username=admin
+
+
+****************************************
+**********  outPUT FILE 1 **************
+****************************************
+
+
+Section parsed
+Assignment parsed
+Assignment parsed
+Assignment parsed
+
+
+
+****************************************
+**********  INPUT FILE 2 ***************
+****************************************
+
+[Database
+host=localhost
+port=3306
+username=admin
+
+
+****************************************
+**********  outPUT FILE 2 **************
+****************************************
+
+Parse error: syntax error
+
+
+
+
+
+
+********************************
+******** DISCUSSION ************
+********************************
+
+Here, the code can detect error, but can't detect specific errors
+The parser can write only syntax error output not specific, so any error is considered as syntax error
+
+For the rest of the case it can parse properly

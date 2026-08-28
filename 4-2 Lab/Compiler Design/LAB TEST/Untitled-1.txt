@@ -1,0 +1,18 @@
+true|false {
+    if(yytext == "true")
+        yylval.bval = 1;
+    else
+        yylval.bval = 0;
+    return BOOL;
+}
+
+.l
+
+
+
+    bool bval;
+
+%token <bval> BOOL
+
+
+|   BOOL  { }

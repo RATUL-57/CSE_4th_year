@@ -1,0 +1,19 @@
+int main() {
+    int a = 10;
+    int b = 20;
+
+    float avg = 15.5;
+    char ch = 'A';
+
+    if(a < b && b != 0) {
+        avg += a + b;
+        a++;
+    }
+
+    print("Lexical Analyzer");
+
+    value = a << 2;
+    flag = a & b;
+
+    @invalid
+}

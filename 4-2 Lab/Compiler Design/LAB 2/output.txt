@@ -1,0 +1,63 @@
+Token Stream:
+---------------------
+<KEYWORD , int>
+<IDENTIFIER , a>
+<ASSIGN_OP , =>
+[ERROR] Line 1: Invalid character constant -> 'abc'
+<DELIMITER , ;>
+<KEYWORD , print>
+<DELIMITER , (>
+<IDENTIFIER , a>
+<DELIMITER , )>
+<DELIMITER , ;>
+<KEYWORD , if>
+<DELIMITER , (>
+<IDENTIFIER , a>
+[ERROR] Line 3: Unrecognized token -> @
+<IDENTIFIER , b>
+<DELIMITER , )>
+<DELIMITER , {>
+<IDENTIFIER , a>
+<ASSIGN_OP , =>
+<IDENTIFIER , a>
+<ARITH_OP , +>
+<INT_CONST , 1>
+<DELIMITER , ;>
+<DELIMITER , }>
+<IDENTIFIER , string>
+<IDENTIFIER , s>
+<ASSIGN_OP , =>
+[ERROR] Line 6: Unrecognized token -> "
+<IDENTIFIER , hello>
+
+
+
+
+Summary Section:
+------------------------
+Total Tokens: 26
+Keywords: 3
+Identifiers: 9
+Constants: 1
+		Integer Constants: 1
+		Float Constants: 0
+		Character Constants: 0
+		String Constants: 0
+Operators: 4
+		Arithmetic Operators: 1
+		Relational Operators: 0
+		Logical Operators: 0
+		Bitwise Operators: 0
+		Assignment Operators: 3
+		Increment/Decrement Operators: 0
+Delimiters: 9
+
+
+
+Errors: 3
+
+Error Details:
+------------------------
+Line 1: Invalid character constant -> 'abc'
+Line 3: Unrecognized token -> @
+Line 6: Unrecognized token -> "

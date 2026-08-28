@@ -1,0 +1,36 @@
+ADD T1, b, c
+MOV a, T1
+
+
+ADD T1, a, b
+MUL T2, T1, c
+MOV x, T2
+
+
+ADD T1, 10, x
+MUL T2, T1, 2
+DIV T3, T2, count
+MOV val, T3
+
+
+MOD T1, num, 5
+MOV rem, T1
+
+
+MUL T1, b, 10
+MUL T2, a, T1
+MOV ans, T2
+
+
+[SYNTAX ERROR Line 6] Invalid expression: "a = b + + c;"
+
+[SYNTAX ERROR Line 7] Invalid expression: "x = (a + b * c;"
+
+[SYNTAX ERROR Line 8] Invalid expression: "x = a + b) * c;"
+
+[SYNTAX ERROR Line 9] Invalid expression: "a = b * ;"
+
+[SYNTAX ERROR Line 10] Invalid expression: "= b + c;"
+
+[SYNTAX ERROR Line 11] Invalid expression: "a = ;"
+

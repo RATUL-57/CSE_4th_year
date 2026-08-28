@@ -1,0 +1,15 @@
+Result = 14.000000
+Result = 3.141593
+Result = 2.718282
+Result = -2.000000
+Result = 1.000000
+Syntax Error
+Invalid sqrt() domain
+Result = 2.302585
+Invalid log() domain
+x = 10.000000
+y = 15.000000
+Result = 30.000000
+Result = 3.141593
+Result = 180.000000
+Undefined tan()

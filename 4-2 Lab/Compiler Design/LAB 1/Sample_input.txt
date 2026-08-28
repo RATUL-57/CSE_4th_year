@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int t,a,b,@total,5pair;
+    cin >> t;
+    int summation = a+b;
+    int diff = a-b;
+    int multiply = a*b;
+    total = 11.5*a + 21.22.;
+// initialize a vector
+    vector<ll>a;
+    for(ll i=0;i<a.size();i++)
+        cout << a[i] << ' ';
+    cout << endl;
+}

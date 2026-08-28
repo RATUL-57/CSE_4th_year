@@ -1,0 +1,8 @@
+marks1=20.5
+marks2=10
+total=marks1+marks2
+x = 10
+y = 20.5
+z = x + y
+power = a ^ b
+mixed = 3.14 * 2 ^ 2
